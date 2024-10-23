@@ -26,13 +26,16 @@
 
 ![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN@master/img/server/readme/AutoGongXueYun/04.webp)
 
+- 新用户的话，进入Actions后，点击页面黄色块里的按钮开启功能再继续，没什么好讲的，页面看不懂可以自行用翻译APP拍屏。
+
 ![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN@master/img/server/readme/AutoGongXueYun/05.webp)
 
 - 到这里就结束了，手机上应该能收到通知，配置了微信推送且没收到通知的话，看一下工作流日志，下面是运行成功的日志
+- 注：如果在日志中显示解密失败，一定是你的环境变量没有添加正确，确定键名是`USER`四个大写字母。
 
 ![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN@master/img/server/readme/AutoGongXueYun/06.webp)
 
-- 默认设置了两个打卡时间，如果要修改打卡时间，自行百度cron表达式，然后去修改workflow.yml文件
+- 默认在工作流文件设置了两个打卡时间，这里不是北京时间所以有偏移量。如果要修改，自行百度cron表达式，然后去修改工作流文件👇
 
 ![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN@master/img/server/readme/AutoGongXueYun/07.webp)
 
@@ -87,7 +90,7 @@ py index.py
 
    
 
-   ## 现在的配置文件示例（环境变量键名设置为`USER`）: 
+   ## 配置文件示例（环境变量键名设置为`USER`）: 
 
    
 
@@ -127,3 +130,54 @@ py index.py
 | longitude       | 打卡位置经度,通过坐标拾取来完成(仅需精确到小数点后6位)，[自行查询传送门](https://jingweidu.bmcx.com/) |
 | latitude        | 打卡位置纬度,通过坐标拾取来完成(仅需精确到小数点后6位)，[自行查询传送门](https://jingweidu.bmcx.com/) |
 | passwordpushKey | 密码打卡结果微信推送，微信推送使用的是pushPlus，请到官网绑定微信([传送门](https://www.pushplus.plus/))，然后在发送消息里面把你的token复制出来粘贴到pushKey这项 |
+
+## 多用户配置文件示例
+
+```
+[
+  {
+    "remark": "用户1111111111111",
+    "phone": "手机号",
+    "password": "密码",
+    "province": "xx省",
+    "city": "xx市",
+    "area": "xx区",
+    "address": "最终打卡页面显示的文字，xx省 · xx市 · 某路边",
+    "longitude": "经度(精确到小数点后六位)",
+    "latitude": "纬度(精确到小数点后六位)",
+    "randomLocation": true,
+    "enable": true,
+    "desc": "打卡备注，顺便说一下：根据用户数量的增加，只要保持标准json格式也就是现在这个样子，一个用户复制一次花括号加进来就行，这里展示三个用户的情况。不限量但是太多了容易造成崩溃",
+    "pushKey": "Key设置为相同的会推送到一个微信去，如果不相同则各自推送"
+  },
+  {
+    "remark": "用户222222222222",
+    "phone": "手机号",
+    "password": "密码",
+    "province": "xx省",
+    "city": "xx市",
+    "area": "xx区",
+    "address": "最终打卡页面显示的文字，xx省 · xx市 · 某路边",
+    "longitude": "经度(精确到小数点后六位)",
+    "latitude": "纬度(精确到小数点后六位)",
+    "randomLocation": true,
+    "desc": "打卡备注，顺便说一下：根据用户数量的增加，只要保持标准json格式也就是现在这个样子，一个用户复制一次花括号加进来就行，这里展示三个用户的情况。不限量但是太多了容易造成崩溃",
+    "pushKey": "Key设置为相同的会推送到一个微信去，如果不相同则各自推送"
+  },
+  {
+    "remark": "用户333333333333",
+    "phone": "手机号",
+    "password": "密码",
+    "province": "xx省",
+    "city": "xx市",
+    "area": "xx区",
+    "address": "最终打卡页面显示的文字，xx省 · xx市 · 某路边",
+    "longitude": "经度(精确到小数点后六位)",
+    "latitude": "纬度(精确到小数点后六位)",
+    "randomLocation": true,
+    "desc": "打卡备注，顺便说一下：根据用户数量的增加，只要保持标准json格式也就是现在这个样子，一个用户复制一次花括号加进来就行，这里展示三个用户的情况。不限量但是太多了容易造成崩溃",
+    "pushKey": "Key设置为相同的会推送到一个微信去，如果不相同则各自推送"
+  }
+]
+```
+
