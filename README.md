@@ -13,7 +13,7 @@
 
 可以不看文字直接看图片，几步就走完了，另外说一下如果频繁利用工作流的话可能会被GitHub判定为滥用，但本项目的频率无碍，且方便好用。
 
-1. Fork仓库，修改一下上方的json配置文件，复制内容
+1. Fork仓库，修改一下文章后方或者是项目根目录下的json配置，复制内容
 2. 依次进入克隆后的仓库页面上方的:`Settings`  → `Actions secrets and variables` → `Actions`
 3. 点击`New repository secret`，Name输入框填写`USER`，Secret输入框里粘贴刚刚复制的`json配置`，如果要多用户，则复制一次数据体自己改改，然后点击下方绿色`Add secret`按钮保存
 4. 回到仓库左上角的`Actions`，点击左侧的`打卡`，点击右侧的`Run workflow`，**再次点击**绿色的Run workflow按钮即可开始定时任务
